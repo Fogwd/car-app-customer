@@ -1,4 +1,6 @@
-export default function Footer() {
+import React from "react";
+
+const Footer = () => {
   return (
     <div className="pt-16 width-full bg-[#cfcfdf] justify-center">
       <div className="grid gap-10 row-gap-6 mb-4 grid-cols-4 w-4/5 mx-auto">
@@ -149,4 +151,6 @@ export default function Footer() {
       </div>
     </div>
   );
-}
+};
+
+export default Footer;

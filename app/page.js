@@ -3,9 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Layout from "@/components/layout";
-import LeftHeader from "@/main-page-components/left-header";
-import RightHeader from "@/main-page-components/right-header";
-
+import Header from "@/main-page-components/header";
 export default function HomePage() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -101,9 +99,8 @@ export default function HomePage() {
   return (
     <Layout>
       <div className="flex flex-col bg-[#efefff] text-black items-center">
-        <div className="grid grid-cols-3 justify-between my-5 w-4/5">
-          <LeftHeader className="col-span-1" />
-          <RightHeader car={currentCar} className="col-span-2" />
+        <div className="container w-4/5 my-5">
+          <Header cars={cars}/>
         </div>
       </div>
     </Layout>
