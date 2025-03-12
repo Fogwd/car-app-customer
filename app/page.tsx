@@ -7,6 +7,11 @@ import Header from "@/main-page-components/header";
 export default function HomePage() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [sectionIndices, setSectionIndices] = useState<{
+    [key: string]: number;
+  }>({
+    cars: 0,
+  });
 
   const cars = [
     {
@@ -85,7 +90,7 @@ export default function HomePage() {
 
   const currentCar = cars[currentIndex];
 
-  const handleNavigation = (section, direction) => {
+  const handleNavigation = (section: string, direction: "left" | "right") => {
     setSectionIndices((prev) => {
       const newIndex =
         direction === "left" ? prev[section] - 1 : prev[section] + 1;
@@ -98,9 +103,9 @@ export default function HomePage() {
 
   return (
     <Layout>
-      <div className="flex flex-col bg-[#efefff] text-black items-center">
-        <div className="container w-4/5 my-5">
-          <Header cars={cars}/>
+      <div className="flex flex-col items-center bg-[#efefff] text-black">
+        <div className="container my-5 w-4/5">
+          <Header cars={cars} />
         </div>
       </div>
     </Layout>

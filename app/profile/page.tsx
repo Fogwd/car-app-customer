@@ -3,10 +3,17 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Layout from "@/components/layout";
+import Image from "next/image";
 
 export default function ProfilePage() {
   const router = useRouter();
-  const [user, setUser] = useState(null);
+  interface User {
+    name: string;
+    email: string;
+    profileImage?: string;
+  }
+
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -24,11 +31,12 @@ export default function ProfilePage() {
   return (
     <Layout>
       <div className="container mx-auto p-6 text-center">
-        <h1 className="text-3xl font-bold">Profile Page</h1>
-        <img
+        <Image
           src={user.profileImage || "/default-avatar.png"}
           alt="User Avatar"
-          className="w-24 h-24 rounded-full mx-auto my-4"
+          className="mx-auto my-4 size-24 rounded-full"
+          width={96}
+          height={96}
         />
         <p className="text-lg font-semibold">{user.name}</p>
         <p className="text-gray-600">{user.email}</p>

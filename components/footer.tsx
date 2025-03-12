@@ -1,9 +1,9 @@
 import React from "react";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    <div className="pt-16 width-full bg-[#cfcfdf] justify-center">
-      <div className="grid gap-10 row-gap-6 mb-4 grid-cols-4 w-4/5 mx-auto">
+    <div className="w-full justify-center bg-[#cfcfdf] pt-16">
+      <div className="mx-auto mb-4 grid w-4/5 grid-cols-4 gap-10 gap-y-6">
         <div className="sm:col-span-2">
           <a
             href="/"
@@ -26,7 +26,7 @@ const Footer = () => {
               <rect x="14" y="1" width="7" height="6"></rect>
               <rect x="14" y="11" width="7" height="12"></rect>
             </svg>
-            <span className="ml-2 text-xl font-bold tracking-wide text-blue-900 uppercase">
+            <span className="ml-2 text-xl font-bold uppercase tracking-wide text-blue-900">
               Company
             </span>
           </a>
@@ -85,7 +85,7 @@ const Footer = () => {
           <span className="text-base font-bold tracking-wide text-blue-900">
             Social
           </span>
-          <div className="flex items-center mt-1 space-x-3">
+          <div className="mt-1 flex items-center space-x-3">
             <a
               href="/"
               className="text-gray-500 transition-colors duration-300 hover:text-black"
@@ -118,11 +118,11 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col-reverse justify-between py-5 border-t lg:flex-row mx-20 w-4/5 mx-auto">
+      <div className="mx-auto flex w-4/5 flex-col-reverse justify-between border-t py-5 lg:flex-row">
         <p className="text-sm text-gray-600">
           © Copyright 2025 Lorem Inc. All rights reserved.
         </p>
-        <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
+        <ul className="mb-3 flex flex-col space-y-2 sm:flex-row sm:space-x-5 sm:space-y-0 lg:mb-0">
           <li>
             <a
               href="/"

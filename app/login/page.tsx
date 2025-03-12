@@ -8,7 +8,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const fakeUser = {
@@ -25,14 +25,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="bg-white p-8 shadow-lg rounded-lg">
-        <h2 className="text-2xl font-bold mb-4">Login</h2>
+    <div className="flex h-screen items-center justify-center bg-gray-100">
+      <div className="rounded-lg bg-white p-8 shadow-lg">
+        <h2 className="mb-4 text-2xl font-bold">Login</h2>
         <form onSubmit={handleLogin}>
           <input
             type="email"
             placeholder="Email"
-            className="w-full p-2 border rounded mb-2"
+            className="mb-2 w-full rounded border p-2"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -40,12 +40,12 @@ export default function LoginPage() {
           <input
             type="password"
             placeholder="Password"
-            className="w-full p-2 border rounded mb-4"
+            className="mb-4 w-full rounded border p-2"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button className="w-full bg-blue-500 text-white p-2 rounded">
+          <button className="w-full rounded bg-blue-500 p-2 text-white">
             Login
           </button>
         </form>

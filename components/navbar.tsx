@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function Navbar() {
@@ -17,8 +18,11 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !(dropdownRef.current as HTMLElement).contains(event.target as Node)
+      ) {
         setIsDropdownOpen(false);
       }
     };
@@ -42,25 +46,25 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-blue-900 text-white py-3 font-[sans-serif] w-full flex">
-      <div className="flex justify-between w-4/5 mx-auto items-center">
+    <nav className="flex w-full bg-blue-900 py-3 font-[sans-serif] text-white">
+      <div className="mx-auto flex w-4/5 items-center justify-between">
         <h1
-          className="text-xl font-bold cursor-pointer"
+          className="cursor-pointer text-xl font-bold"
           onClick={() => router.push("/")}
         >
           CarDistributor
         </h1>
 
-        <div className="flex rounded-md overflow-hidden w-2/5 mx-auto">
+        <div className="mx-auto flex w-2/5 overflow-hidden rounded-md">
           <input
             type="text"
             placeholder="Search Something..."
-            className="w-full outline-none bg-white text-gray-600 text-sm px-4 py-3"
+            className="w-full bg-white px-4 py-3 text-sm text-gray-600 outline-none"
           />
 
           <button
             type="button"
-            className="flex items-center justify-center bg-orange-600 hover:bg-orange-700 px-5"
+            className="flex items-center justify-center bg-orange-600 px-5 hover:bg-orange-700"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +78,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 px-5"
+            className="flex items-center justify-center bg-yellow-500 px-5 hover:bg-yellow-600"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -94,66 +98,66 @@ export default function Navbar() {
           <li>
             <a
               href="/"
-              className="relative text-white hover:text-yellow-400 transition-colors duration-300"
+              className="relative text-white transition-colors duration-300 hover:text-yellow-400"
             >
               Home
-              <span className="absolute left-0 bottom-0 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 w-0 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-yellow-400 to-red-500 transition-all duration-300 group-hover:w-full"></span>
             </a>
           </li>
           <li>
             <a
               href="/"
-              className="relative text-white hover:text-yellow-400 transition-colors duration-300"
+              className="relative text-white transition-colors duration-300 hover:text-yellow-400"
             >
               Categories
-              <span className="absolute left-0 bottom-0 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 w-0 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-yellow-400 to-red-500 transition-all duration-300 group-hover:w-full"></span>
             </a>
           </li>
           <li>
             <a
               href="/"
-              className="relative text-white hover:text-yellow-400 transition-colors duration-300"
+              className="relative text-white transition-colors duration-300 hover:text-yellow-400"
             >
               Explore
-              <span className="absolute left-0 bottom-0 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 w-0 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-yellow-400 to-red-500 transition-all duration-300 group-hover:w-full"></span>
             </a>
           </li>
 
           <li className="ml-4">
-            <div className="relative" ref={dropdownRef}>
-              <img
-                src={"/project-image/default-avatar.png"}
-                className="w-10 h-10 rounded-full cursor-pointer"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              />
-              {isDropdownOpen && (
-                <div
-                  className="origin-top-right absolute right-0 mt-2 w-40 
-                    rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5
-                    focus:outline-none"
-                  role="menu"
-                >
-                  <div className="py-1" role="none">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 
+            <Image
+              alt="User Avatar"
+              src={"/project-image/default-avatar.png"}
+              width={40}
+              height={40}
+              className="cursor-pointer rounded-full"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            />
+            {isDropdownOpen && (
+              <div
+                className="absolute right-0 mt-2 w-40 origin-top-right 
+                    rounded-md bg-white shadow-lg focus:outline-none"
+                role="menu"
+              >
+                <div className="py-1" role="none">
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700 
                             hover:bg-gray-100"
-                      role="menuitem"
-                    >
-                      Login
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700
+                    role="menuitem"
+                  >
+                    Login
+                  </a>
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700
                             hover:bg-gray-100"
-                      role="menuitem"
-                    >
-                      Sign up
-                    </a>
-                  </div>
+                    role="menuitem"
+                  >
+                    Sign up
+                  </a>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </li>
         </ul>
       </div>
