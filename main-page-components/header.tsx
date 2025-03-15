@@ -2,10 +2,15 @@
 
 import React from "react";
 import Image from "next/image";
-import type { CustomFlowbiteTheme } from "flowbite-react";
-import { DropdownItem, Dropdown } from "flowbite-react";
-
-const customTheme: CustomFlowbiteTheme["dropdown"] = {};
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface Car {
   imageSrc: string;
@@ -36,12 +41,21 @@ const Header: React.FC<HeaderProps> = ({ cars }) => {
           </div>
         </div>
 
-        <Dropdown label="Brand" theme={customTheme}>
-          <DropdownItem>BMW</DropdownItem>
-          <DropdownItem>Toyota</DropdownItem>
-          <DropdownItem>Mercedes</DropdownItem>
-          <DropdownItem>Audi</DropdownItem>
-        </Dropdown>
+        <Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Fruits</SelectLabel>
+              <SelectItem value="apple">Apple</SelectItem>
+              <SelectItem value="banana">Banana</SelectItem>
+              <SelectItem value="blueberry">Blueberry</SelectItem>
+              <SelectItem value="grapes">Grapes</SelectItem>
+              <SelectItem value="pineapple">Pineapple</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
 
         <div className="rounded-lg bg-white p-4">
           <div className="flex w-full flex-col items-center space-y-4">
