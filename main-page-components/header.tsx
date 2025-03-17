@@ -7,10 +7,11 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Car {
   imageSrc: string;
@@ -32,44 +33,55 @@ const Header: React.FC<HeaderProps> = ({ cars }) => {
       <div className="flex w-9/10 flex-col items-center justify-center rounded-lg bg-white p-4 shadow-md">
         <h1 className="mb-4 text-base font-bold">Find the car you want</h1>
 
-        <div className="mb-6 grid w-full grid-cols-2 gap-2 text-center">
-          <div className="cursor-pointer items-center rounded-md bg-blue-800 px-3 py-2 text-white transition duration-300 hover:bg-blue-900">
+        <div className="mb-6 grid w-9/10 grid-cols-2 gap-2 text-center">
+          <Button className="border border-blue-600 bg-white text-blue-600 hover:bg-blue-600 hover:text-white">
             New
-          </div>
-          <div className="cursor-pointer items-center rounded-md border border-blue-500 bg-white px-3 py-2 text-blue-500 transition duration-300 hover:bg-blue-100">
+          </Button>
+          <Button className="border border-blue-600 bg-white text-blue-600 hover:bg-blue-600 hover:text-white">
             Old
-          </div>
+          </Button>
         </div>
 
         <Select>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select a fruit" />
+          <SelectTrigger className="w-9/10">
+            <SelectValue placeholder="Select a brand" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>Fruits</SelectLabel>
-              <SelectItem value="apple">Apple</SelectItem>
-              <SelectItem value="banana">Banana</SelectItem>
-              <SelectItem value="blueberry">Blueberry</SelectItem>
-              <SelectItem value="grapes">Grapes</SelectItem>
-              <SelectItem value="pineapple">Pineapple</SelectItem>
+              <SelectItem value="Toyota">Toyota</SelectItem>
+              <SelectItem value="Ford">Ford</SelectItem>
+              <SelectItem value="Honda">Honda</SelectItem>
+              <SelectItem value="Nissan">Nissan</SelectItem>
+              <SelectItem value="Volkswagen">Volkswagen</SelectItem>
+              <SelectItem value="Chevrolet">Chevrolet</SelectItem>
+              <SelectItem value="Hyundai">Hyundai</SelectItem>
+              <SelectItem value="Kia">Kia</SelectItem>
+              <SelectItem value="Subaru">Subaru</SelectItem>
+              <SelectItem value="Mazda">Mazda</SelectItem>
+              <SelectItem value="BMW">BMW</SelectItem>
+              <SelectItem value="Mercedes-Benz">Mercedes-Benz</SelectItem>
+              <SelectItem value="Audi">Audi</SelectItem>
+              <SelectItem value="Lexus">Lexus</SelectItem>
+              <SelectItem value="Porsche">Porsche</SelectItem>
+              <SelectItem value="Tesla">Tesla</SelectItem>
+              <SelectItem value="Jaguar">Jaguar</SelectItem>
+              <SelectItem value="Land Rover">Land Rover</SelectItem>
+              <SelectItem value="Volvo">Volvo</SelectItem>
+              <SelectItem value="Mitsubishi">Mitsubishi</SelectItem>
+              <SelectItem value="Chrysler">Chrysler</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
 
-        <div className="rounded-lg bg-white p-4">
-          <div className="flex w-full flex-col items-center space-y-4">
-            <button className="w-4/5 rounded bg-green-500 px-4 py-2 text-white transition duration-300 hover:bg-green-600">
-              Search
-            </button>
-          </div>
-        </div>
+        <Button className="mt-5 bg-blue-600 hover:bg-blue-900">
+          <Search /> Search
+        </Button>
       </div>
 
       {/* Right Header */}
       <div className="relative col-span-3 flex h-60 rounded-lg bg-white">
         {/* Car Image */}
-        <div className="relative h-full w-2/5 bg-gray-50">
+        <div className="relative h-full w-2/5 rounded-lg bg-gray-50">
           <Image
             src={currentCar.imageSrc}
             alt={currentCar.name}
